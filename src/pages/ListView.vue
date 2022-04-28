@@ -21,7 +21,7 @@
                             <td>{{ item.complete }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-primary">편집</button>
+                                    <button class="btn btn-primary" @click="editTodo(item.id)">수정</button>
                                     <button class="btn btn-danger" @click="deleteTodo(item.id)">삭제</button>
                                 </div>
                             </td>
@@ -84,10 +84,19 @@ import { useRouter } from 'vue-router'
                 });
             }
 
+            // 수정하기
+            const editTodo = (_id) => { 
+                router.push({
+                    name: 'Update',
+                    params: { id: _id }
+                });
+            }
+
             return {
                 todos,
                 deleteTodo,
-                moveDetail
+                moveDetail,
+                editTodo
             }
         }
     }
