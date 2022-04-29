@@ -28,7 +28,7 @@
 
                     <div class="btn-group" role="group" aria-label="">
                         <button type="submit" class="btn btn-danger">확인</button>
-                        <button type="button" class="btn btn-primary">취소</button>
+                        <button type="button" class="btn btn-primary" @click="moveList">취소</button>
                     </div>
 
                 </form>
@@ -91,9 +91,16 @@
                     .catch()
             }
 
+            const moveList = () => {
+                router.push({
+                    name: 'List'
+                });
+            }
+
             return {
                 todo,
-                onSubmit
+                onSubmit,
+                moveList
             }
 
         }

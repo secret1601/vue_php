@@ -12,7 +12,7 @@
                 <div class="btn-group" role="group" aria-label="">
                     <button type="button" class="btn btn-warning" @click="editTodo(todo.id)">수정</button>
                     <button type="button" class="btn btn-danger" @click="deleteTodo(todo.id)">삭제</button>
-                    <button type="button" class="btn btn-primary">이전</button>
+                    <button type="button" class="btn btn-primary" @click="moveList">목록</button>
                 </div>
             </div>
         </div>
@@ -57,7 +57,9 @@
                 .then(res => res.json())
                 .then(data => {
                     if(data.result == 1) {
-                        router.push('/list')
+                        router.push({
+                            name: 'List'
+                        });
                     }else{
                         console.log('삭제에 실패했습니다');
                     }        
@@ -73,10 +75,17 @@
                 });
             }
 
+            const moveList = () => {
+                router.push({
+                    name: 'List',
+                });
+            }
+
             return {
                 todo,
                 deleteTodo,
-                editTodo
+                editTodo,
+                moveList
             }
         }
     }

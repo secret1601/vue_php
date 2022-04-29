@@ -19,7 +19,7 @@
                     </div>
                     <div class="btn-group" role="group">
                         <button type="submit" class="btn btn-primary">확인</button>
-                        <button type="button" class="btn btn-danger">취소</button>
+                        <button type="button" class="btn btn-danger" @click="moveList">취소</button>
                     </div>
                 </form>
             </div>
@@ -46,7 +46,9 @@ import { useRouter } from 'vue-router'
                 .then(data => {
                     if(data.result == 1) {
                         // List 화면으로 이동한다.
-                        router.push('/list')
+                        router.push({
+                            name: 'List'
+                        });
                     }else{
                         console.log("서버에서 자료가 오지 않았어요.")
                     }
@@ -54,9 +56,16 @@ import { useRouter } from 'vue-router'
                 .catch()
             }
 
+            const moveList = () => {
+                router.push({
+                    name: 'List'
+                });
+            }
+
             return {
                 todo,
-                onSubmit
+                onSubmit,
+                moveList
             }
         }
     }
