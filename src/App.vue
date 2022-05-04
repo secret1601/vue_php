@@ -11,9 +11,10 @@
     <router-view />
 
     <!-- 안내창 -->
-    <ToastBox 
-    :message="toastMessage" 
-    v-if="toastShow" />
+    <transition name="fade">
+      <ToastBox :message="toastMessage" v-if="toastShow" />
+    </transition>
+    
     
   </div>
 
@@ -47,4 +48,18 @@
 
 <style>
   #app {}
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s;
+  }
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+  .fade-enter-to,
+  .fade-leave-from {
+    opacity: 1;
+  }
+
 </style>

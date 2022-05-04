@@ -18,12 +18,17 @@
             </div>
         </div>
     </div>
-    <!-- 경고창 -->
-    <ModalWin 
-        v-if="showModal"
-        @close="closeModal"
-        @delete="deleteTodo"
-    />
+    <teleport to="#popup">
+        <!-- 경고창 -->
+        <ModalWin 
+            v-if="showModal"
+            @close="closeModal"
+            @delete="deleteTodo"
+        >
+            <template v-slot:title>할일삭제</template>
+            <template v-slot:body>정말 삭제하시겠습니까?</template>
+        </ModalWin>
+    </teleport>
 
 </template>
 
